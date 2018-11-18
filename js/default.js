@@ -39,7 +39,7 @@ function getCookie(c_name){
 
 
 function getFileName(){
-		return window.location.href,split('/').pop();
+		return window.location.hrefsplit('/').pop();
 }
 
 var filename = getFileName();
