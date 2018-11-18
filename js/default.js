@@ -1,3 +1,43 @@
+//クッキー
+function setCookie(c_name,value,expiredays) {
+	// 有効期限の日付
+	var extime = new Date().getTime();
+	var citime = new Date(extime + (60*60*24*1000*expiredays));
+	var exdate = citime.toUTCString();
+
+	var s="";
+	s += c_name + "=" + escape(value);
+	s += "; path=" + location.pathname;
+	if(expiredays){
+		s += "; expires=" + exdate + "; ";
+	}else{
+		s += "; ";
+	}
+	//クッキーに保存
+	document.cookie = s;
+}
+
+//クッキーの値を取得
+function getCookie(c_name){
+	var st = "";
+	var ed = "";
+	if(0 < document.cookie.length){
+		//クッキーの値を取り出す
+		st = document.cookie.indexOf(c_name + "=");
+		if(st! = -1){
+			st = st + c_name.length + 1;
+			ed = document.cookie.indexOf(";", st);
+			if(ed == 1)
+				ed = document.cookie.length;
+
+			//値をデコード
+			return unescape(document.cookie.substring(st, ed));
+		}
+	}
+	return "";
+}
+
+
 function getFileName(){
 		return window.location.href,split('/').pop();
 }
@@ -11,7 +51,7 @@ if(filename === 'other.html'){
 }
 opt.selected = true;
 
-docment.getElementById('form').select.onchange = function(){
+document.getElementById('form').select.onchange = function(){
 	location.href = document.getElementById('form').select.value;
 }
 
