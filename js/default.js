@@ -37,6 +37,22 @@ function getCookie(c_name){
 	return "";
 }
 
+//Cookieを読み込み、表示する文章を変える
+var last_date = getCookie('lastDate');
+if(last_date){
+	document.getElementById('cookie').textContent = '前回訪れた時間:' + last_date;
+}else{
+	document.getElementById('cookie').textContent = 'はじめまして';
+}
+	
+//新しい値の保存
+var current_time = new Date();
+setCookie('lastDate', current_time.toString(), 7);
+
+//クッキーの削除
+document.getElementById('remove_cookie').onsubmit = function(){
+	setCookie('lastDate', "", 0);
+}
 
 function getFileName(){
 		return window.location.href.split('/').pop();
