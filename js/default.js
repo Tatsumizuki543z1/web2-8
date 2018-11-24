@@ -38,10 +38,16 @@ var refresh = function(){
 
 update();
 
+<<<<<<< Updated upstream
 function setCookie(c_name,value,expiredays){
   var extime = new Date().getTime();
   var cltime = new Date(extime + (60*60*24*1000*expiredays));
   var exdate = cltime.toUTCString();
+=======
+function getFileName(){
+	return window.location.href.split('/').pop();
+}
+>>>>>>> Stashed changes
 
   var s="";
   s += c_name +"="+ escape(value);
